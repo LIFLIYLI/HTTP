@@ -8,22 +8,56 @@
 </head>
 <body>
     <h>HTTP介绍</h>
-     <h1>一：HTTP请求包括哪几部分</h1>
-<p1>HTTP请求包括3或4个部分</p1>
-<p1>第一部分：动词 路径 协议/版本号</p1>
-<p1>第二部分为key:value部分</p1>
-<p1>第三部分永远为回车</p1>
-<p1>第四部分为数据，可以没有</p1>
+     <h1>一：HTTP请求包括哪几部分</h1></br>
+<p1>HTTP请求包括3或4个部分
+第一部分：动词 路径 协议/版本号
+第二部分为key:value部分
+第三部分永远为回车
+第四部分为数据，可以没有。</p1></br>
+</br>
+示例1：命令行输入curl -s -v -H "Frank: xxx" -- "https://www.baidu.com"</br>
+> GET / HTTP/1.1      表示是一个GET请求，/ 表示根目录（和本地根目录无关），HTTP/1.1表示协议1.1版本</br>
+> Host: www.baidu.com     表示所访问的域名</br>
+> User-Agent: curl/7.55.0    表示我用7.55.0版本的curl发起请求</br>  
+> Accept: */*     表示服务器给的内容我都接受</br>
+> Frank: xxx     表示-H "Frank: xxx"我所输入的内容（也可以不输入，输入了也没用，服务器不能识别）</br>
+>                 这里是第三部分，是个回车         </br>
+</br> 
+示例2：命令行输入curl -X POST -d 123 -s -v -H "Frank: xxx" -- "https://www.baidu.com"  </br>
+>POST / HTTP/1.1      这是一个POST请求，协议/版本号为HTTP/1.1 </br>
+>Host: www.baidu.com      表示所访问的域名  </br>
+>User-Agent: curl/7.55.0     表示我用7.55.0版本的curl发起请求</br>
+>Accept: */*        表示服务器给的内容我都接受</br>
+> Frank: xxx      是我随便输入的内容</br>
+> Content-Length: 3       表示我上传的数据，数据内容就是上面-d中的123，数据大小3个字节</br>
+> Content-Type: application/x-www-form-urlencoded      表示我上传的格式</br>
+></br>
+
+</br>
 <h1>如何用Chrome查看请求内容</h1>
 <p1>打开Chrome，点击鼠标右键，单击检查，打开Network,在地址栏输入你要查询的网址，选中GET文件，再展开Request Headers，点一下view source,这样你就得到了请求的内容</p1>
-<h1>HTTP响应包括哪几部分</h1>
-<p1>HTTP响应包括3或4个部分</p1>
-<p1>第一部分：协议/版本号，状态码，状态解释</p1>
-<p1>第二部分为key:value部分</p1>
-<p1>第三部分永远为回车</p1>
-<p1>第四部分为要下载的内容</p1>
+
+</br>
+<h1>响应包括哪几部分</h1>
+<p1>响应包括3或4个部分
+第一部分：协议/版本号，状态码，状态解释
+第二部分为key:value部分
+第三部分永远为回车
+第四部分为要下载的内容</p1></br>
+示例3：</br>
+HTTP/1.1 302 Found   表示协议/版本号，  302表示服务器给个反应“临时重定向”  </br>
+Connection: Keep-Alive         </br>
+Content-Length: 17931      表示响应的内容字节为17931个字节  </br>
+Content-Type: text/html      表示响应的文件类型   </br>
+Date: Fri, 11 May 2018 08:40:25 GMT      </br>
+Etag: "54d97487-460b"            </br>
+Server: bfe/1.0.8.18      表示百度的一个前端服务器   </br>
+          回车                           </br>
+        </br>
+
 <h1>如何用Chrome查看响应内容</h1>
 <p1>打开Chrome，点击鼠标右键，单击检查，打开Network,在地址栏输入你要查询的网址，选中GET文件，再展开Response Headers，点一下view source,这样你就得到了响应的内容</p1>
+</br>
 <h1>如何使用curl</h1>
 <p1>命令行输入，请示示例curl -S -V -H "Frank:xxx" -- "访问的域名"</p1>
 <p1>curl常见用法参照http://www.codebelief.com/article/2017/05/linux-command-line-curl-usage/</p1>
